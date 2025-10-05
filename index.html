@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>逸响药院游戏网络科技集团 - 官方网站</title>
+  <meta name="description" content="逸响药院游戏网络科技集团 - 创新游戏开发・网络科技" />
+  <link rel="icon" href="YY.png" />
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent1:#06b6d4;
+      --accent2:#2563eb;
+      --glass: rgba(255,255,255,0.04);
+      --radius:12px;
+      --maxw:1100px;
+      --container-pad:24px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, "Noto Sans SC", "Noto Sans JP", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, #071025 0%, #07183a 60%), radial-gradient(600px 300px at 10% 10%, rgba(3,105,161,0.12), transparent 10%);
+      color:#e6eef6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+    .wrap{max-width:var(--maxw);margin:0 auto;padding:32px var(--container-pad)}
+    header{display:flex;align-items:center;justify-content:space-between;padding:8px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:56px;width:auto;display:block}
+    .brand h1{font-size:1.05rem;margin:0;color:white}
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    nav a:hover{color:var(--accent2)}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:28px}
+    .hero-left h2{font-size:2.2rem;margin:0 0 12px 0;line-height:1.05}
+    .hero-left p{color:var(--muted);margin:0 0 18px}
+    .cta-row{display:flex;gap:12px}
+    .btn{display:inline-block;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:700;box-shadow:0 6px 18px rgba(2,6,23,0.6);border:0}
+    .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#021427}
+    .btn-secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    .hero-right{background:linear-gradient(180deg, rgba(255,255,255,0.03), transparent);padding:18px;border-radius:12px;backdrop-filter: blur(6px)}
+    .hero-card{display:flex;flex-direction:column;gap:8px}
+    .hero-card img{max-width:100%;height:auto;border-radius:8px}
+    .kpis{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+    .kpi{background:var(--glass);padding:10px;border-radius:10px;min-width:110px;text-align:center}
+    .kpi strong{display:block;font-size:1.2rem}
+    section{margin:64px 0}
+    .section-title{display:flex;align-items:baseline;gap:12px}
+    .section-title h3{margin:0;font-size:1.15rem}
+    .section-title p{color:var(--muted);margin:0;font-size:0.95rem}
+    .games-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+    .game{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:14px;border-radius:12px;min-height:140px;display:flex;flex-direction:column}
+    .game img{width:100%;height:110px;object-fit:cover;border-radius:8px}
+    .game h4{margin:10px 0 4px 0}
+    .game p{margin:0;color:var(--muted);font-size:0.95rem}
+    .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+    .member{background:var(--card);padding:12px;border-radius:10px;text-align:center}
+    .avatar{width:84px;height:84px;border-radius:14px;background:linear-gradient(135deg,var(--accent1),var(--accent2));margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-weight:800}
+    .news-list{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+    .news-item{background:rgba(255,255,255,0.02);padding:12px;border-radius:10px;display:flex;gap:12px;align-items:flex-start}
+    .news-item time{color:var(--muted);font-size:0.85rem}
+    .contact-form{display:grid;grid-template-columns:1fr 320px;gap:18px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field input,.field textarea{padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;min-height:40px}
+    .field textarea{min-height:140px;resize:vertical}
+    footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr; text-align:center}
+      .hero-right{order:2}
+      .hero-left{order:1}
+      .games-grid{grid-template-columns:repeat(2,1fr)}
+      .team-grid{grid-template-columns:repeat(2,1fr)}
+      .contact-form{grid-template-columns:1fr}
+      nav{display:none}
+    }
+    @media (max-width:520px){
+      .games-grid{grid-template-columns:1fr}
+      .team-grid{grid-template-columns:1fr}
+      .brand img{height:44px}
+      .hero-left h2{font-size:1.6rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" role="document">
+    <header role="banner" aria-label="Site header">
+      <div class="brand">
+        <img src="YY.png" alt="逸响药院ロゴ" />
+        <div>
+          <h1>逸响药院 游戏网络科技集团</h1>
+          <div style="font-size:0.9rem;color:var(--muted)">创新・娱乐・技术</div>
+        </div>
+      </div>
+      <nav role="navigation" aria-label="Main navigation">
+        <a href="#about">关于我们</a>
+        <a href="#games">产品</a>
+        <a href="#team">团队</a>
+        <a href="#news">新闻</a>
+        <a href="#contact">联系我们</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero" aria-label="主ビジュアル">
+        <div class="hero-left">
+          <h2>次世代的游戏体验与网络技术，面向全球。</h2>
+          <p>我们整合游戏开发、在线服务与智能网络，为玩家提供安全而富有魅力的生态。</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#games">查看产品</a>
+            <a class="btn btn-secondary" href="#contact">商务合作</a>
+          </div>
+          <div style="margin-top:22px;font-size:0.95rem;color:var(--muted)">
+            <strong style="color:white">服务范围</strong>
+            <div style="display:flex;gap:12px;margin-top:8px;flex-wrap:wrap">
+              <span style="background:rgba(255,255,255,0.03);padding:8px;border-radius:8px">在线游戏开发</span>
+              <span style="background:rgba(255,255,255,0.03);padding:8px;border-radius:8px">网络运维</span>
+              <span style="background:rgba(255,255,255,0.03);padding:8px;border-radius:8px">安全与分析</span>
+            </div>
+          </div>
+        </div>
+        <aside class="hero-right" aria-label="公司概览">
+          <div class="hero-card" role="region" aria-labelledby="company-stats">
+            <img src="YYDEFullsize.png" alt="逸响药院大标识" />
+            <div id="company-stats" style="font-weight:700">关于 逸响药院</div>
+            <div style="color:var(--muted);font-size:0.95rem">成立：2020 • 布局：中国 / 东京 • 使命：以技术改变娱乐</div>
+            <div class="kpis" aria-hidden="false">
+              <div class="kpi"><strong>12</strong><small style="color:var(--muted)">自研标题</small></div>
+              <div class="kpi"><strong>3M+</strong><small style="color:var(--muted)">月活</small></div>
+              <div class="kpi"><strong>24/7</strong><small style="color:var(--muted)">运维</small></div>
+            </div>
+          </div>
+        </aside>
+      </section>
+      <section id="about" aria-labelledby="about-title">
+        <div class="section-title">
+          <h3 id="about-title">关于我们</h3>
+          <p>愿景与优势</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px">
+          <div style="background:rgba(255,255,255,0.02);padding:16px;border-radius:12px">
+            <h4>愿景</h4>
+            <p style="color:var(--muted)">融合游戏与网络，创造更安全更有趣的线上空间。</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.02);padding:16px;border-radius:12px">
+            <h4>使命</h4>
+            <p style="color:var(--muted)">以用户为中心，数据驱动持续改进。</p>
+          </div>
+        </div>
+      </section>
+      <section id="games" aria-labelledby="games-title">
+        <div class="section-title">
+          <h3 id="games-title">主要产品</h3>
+          <p>代表性标题与服务</p>
+        </div>
+        <div class="games-grid" role="list">
+          <article class="game" role="listitem" aria-labelledby="g1">
+            <img src="YYDES.png" alt="产品缩略图" />
+            <h4 id="g1">Echo Blade（暂名）</h4>
+            <p>动作RPG。融合大规模PvP与协作玩法。</p>
+          </article>
+          <article class="game" role="listitem" aria-labelledby="g2">
+            <div style="height:110px;border-radius:8px;background:linear-gradient(90deg,#123 0%,#246 100%);display:flex;align-items:center;justify-content:center;color:white;font-weight:700">Coming Soon</div>
+            <h4 id="g2">Nebula Fleet</h4>
+            <p>跨平台战略网络游戏，支持云存档。</p>
+          </article>
+          <article class="game" role="listitem" aria-labelledby="g3">
+            <div style="height:110px;border-radius:8px;background:linear-gradient(90deg,#064 0%,#06b6d4 100%);display:flex;align-items:center;justify-content:center;color:white;font-weight:700">Service</div>
+            <h4 id="g3">网络运营平台</h4>
+            <p>运维面板、匹配系统、日志分析一体化。</p>
+          </article>
+        </div>
+      </section>
+      <section id="team" aria-labelledby="team-title">
+        <div class="section-title">
+          <h3 id="team-title">团队</h3>
+          <p>核心成员</p>
+        </div>
+        <div class="team-grid">
+          <div class="member" role="article" aria-labelledby="m1">
+            <div class="avatar">JS</div>
+            <h4 id="m1">李 晨（CEO）</h4>
+            <div style="color:var(--muted)">产品战略</div>
+          </div>
+          <div class="member" role="article" aria-labelledby="m2">
+            <div class="avatar">MK</div>
+            <h4 id="m2">山田 真（CTO）</h4>
+            <div style="color:var(--muted)">网络与基础设施</div>
+          </div>
+          <div class="member" role="article" aria-labelledby="m3">
+            <div class="avatar">AL</div>
+            <h4 id="m3">张 丽（CMO）</h4>
+            <div style="color:var(--muted)">市场与社区</div>
+          </div>
+          <div class="member" role="article" aria-labelledby="m4">
+            <div class="avatar">RN</div>
+            <h4 id="m4">王 强（Lead Dev）</h4>
+            <div style="color:var(--muted)">引擎与系统</div>
+          </div>
+        </div>
+      </section>
+      <section id="news" aria-labelledby="news-title">
+        <div class="section-title">
+          <h3 id="news-title">最新新闻</h3>
+          <p>更新与发布</p>
+        </div>
+        <div class="news-list">
+          <div class="news-item" role="article">
+            <div style="flex:1">
+              <strong>Echo Blade：大型更新已上线</strong>
+              <div style="color:var(--muted)">新地图与新赛季。</div>
+            </div>
+            <div style="text-align:right"><time datetime="2025-09-01">2025-09-01</time></div>
+          </div>
+          <div class="news-item" role="article">
+            <div style="flex:1">
+              <strong>官方社区已开放</strong>
+              <div style="color:var(--muted)">Discord / 微博官方频道开通。</div>
+            </div>
+            <div style="text-align:right"><time datetime="2025-07-10">2025-07-10</time></div>
+          </div>
+        </div>
+      </section>
+      <section id="contact" aria-labelledby="contact-title">
+        <div class="section-title">
+          <h3 id="contact-title">联系我们</h3>
+          <p>商务/招聘/媒体</p>
+        </div>
+        <div class="contact-form" role="form" aria-label="Contact form">
+          <form style="display:flex;flex-direction:column;gap:12px" onsubmit="event.preventDefault();alert('这是演示提交。需要后端集成请联系我。');">
+            <div class="field">
+              <label for="name">姓名</label>
+              <input id="name" name="name" placeholder="张三" required />
+            </div>
+            <div class="field">
+              <label for="email">邮箱</label>
+              <input id="email" name="email" type="email" placeholder="name@example.com" required />
+            </div>
+            <div class="field">
+              <label for="message">内容</label>
+              <textarea id="message" name="message" placeholder="请填写您的需求" required></textarea>
+            </div>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-primary" type="submit">发送</button>
+              <button class="btn btn-secondary" type="button" onclick="document.getElementById('name').value='';document.getElementById('email').value='';document.getElementById('message').value='';">清空</button>
+            </div>
+          </form>
+          <aside style="background:rgba(255,255,255,0.02);padding:16px;border-radius:12px">
+            <h4>联系方式</h4>
+            <p style="color:var(--muted)">Email: info@yxyk-example.com<br/>地点：中国 / 东京</p>
+            <h4 style="margin-top:12px">招聘</h4>
+            <p style="color:var(--muted)">邮件主题请注明【招聘】。</p>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <footer role="contentinfo">
+      <div>© 逸响药院游戏网络科技集团</div>
+      <div style="color:var(--muted)">隐私政策・使用条款・公司信息</div>
+    </footer>
+  </div>
+</body>
+</html>
