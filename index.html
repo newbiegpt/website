@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="zh-Hans">
+<html lang="ja">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>逸响药院游戏网络科技集团 - 官方网站</title>
-  <meta name="description" content="逸响药院游戏网络科技集团 - 创新游戏开发・网络科技" />
+  <title>逸響薬院ゲームネットワークテクノロジーグループ - 公式サイト</title>
+  <meta name="description" content="逸響薬院ゲームネットワークテクノロジーグループ - 革新的なゲーム開発とネットワーク技術" />
   <link rel="icon" href="YY.png" />
   <style>
     :root{
@@ -30,13 +30,15 @@
       line-height:1.45;
     }
     .wrap{max-width:var(--maxw);margin:0 auto;padding:32px var(--container-pad)}
-    header{display:flex;align-items:center;justify-content:space-between;padding:8px 0}
+    header{display:flex;align-items:center;justify-content:space-between;padding:8px 0;gap:16px;flex-wrap:wrap}
     .brand{display:flex;align-items:center;gap:12px}
     .brand img{height:56px;width:auto;display:block}
     .brand h1{font-size:1.05rem;margin:0;color:white}
     nav{display:flex;gap:18px;align-items:center}
     nav a{color:var(--muted);text-decoration:none;font-weight:600}
     nav a:hover{color:var(--accent2)}
+    .lang-toggle{padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:rgba(15,23,36,0.6);color:var(--muted);font-weight:600;cursor:pointer;transition:color 0.2s ease,border-color 0.2s ease}
+    .lang-toggle:hover{color:#fff;border-color:rgba(255,255,255,0.2)}
     .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:28px}
     .hero-left h2{font-size:2.2rem;margin:0 0 12px 0;line-height:1.05}
     .hero-left p{color:var(--muted);margin:0 0 18px}
@@ -47,9 +49,6 @@
     .hero-right{background:linear-gradient(180deg, rgba(255,255,255,0.03), transparent);padding:18px;border-radius:12px;backdrop-filter: blur(6px)}
     .hero-card{display:flex;flex-direction:column;gap:8px}
     .hero-card img{max-width:100%;height:auto;border-radius:8px}
-    .kpis{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
-    .kpi{background:var(--glass);padding:10px;border-radius:10px;min-width:110px;text-align:center}
-    .kpi strong{display:block;font-size:1.2rem}
     section{margin:64px 0}
     .section-title{display:flex;align-items:baseline;gap:12px}
     .section-title h3{margin:0;font-size:1.15rem}
@@ -59,7 +58,7 @@
     .game img{width:100%;height:110px;object-fit:cover;border-radius:8px}
     .game h4{margin:10px 0 4px 0}
     .game p{margin:0;color:var(--muted);font-size:0.95rem}
-    .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:18px}
     .member{background:var(--card);padding:12px;border-radius:10px;text-align:center}
     .avatar{width:84px;height:84px;border-radius:14px;background:linear-gradient(135deg,var(--accent1),var(--accent2));margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-weight:800}
     .news-list{display:flex;flex-direction:column;gap:12px;margin-top:12px}
@@ -91,177 +90,389 @@
   <div class="wrap" role="document">
     <header role="banner" aria-label="Site header">
       <div class="brand">
-        <img src="YY.png" alt="逸响药院ロゴ" />
+        <img src="YY.png" alt="逸響薬院ロゴ" data-i18n-alt="brand-logo-alt" />
         <div>
-          <h1>逸响药院 游戏网络科技集团</h1>
-          <div style="font-size:0.9rem;color:var(--muted)">创新・娱乐・技术</div>
+          <h1 data-i18n="brand-name">逸響薬院 ゲームネットワークテクノロジーグループ</h1>
+          <div data-i18n="brand-tagline" style="font-size:0.9rem;color:var(--muted)">イノベーション・エンタメ・テクノロジー</div>
         </div>
       </div>
       <nav role="navigation" aria-label="Main navigation">
-        <a href="#about">关于我们</a>
-        <a href="#games">产品</a>
-        <a href="#team">团队</a>
-        <a href="#news">新闻</a>
-        <a href="#contact">联系我们</a>
+        <a href="#about" data-i18n="nav-about">私たちについて</a>
+        <a href="#games" data-i18n="nav-products">プロダクト</a>
+        <a href="#team" data-i18n="nav-team">チーム</a>
+        <a href="#news" data-i18n="nav-news">ニュース</a>
+        <a href="#contact" data-i18n="nav-contact">お問い合わせ</a>
       </nav>
+      <button id="lang-toggle" class="lang-toggle" type="button" aria-label="中国語に切り替え">中文</button>
     </header>
     <main>
       <section class="hero" aria-label="主ビジュアル">
         <div class="hero-left">
-          <h2>次世代的游戏体验与网络技术，面向全球。</h2>
-          <p>我们整合游戏开发、在线服务与智能网络，为玩家提供安全而富有魅力的生态。</p>
+          <h2 data-i18n="hero-title">次世代のゲーム体験とネットワーク技術を世界へ。</h2>
+          <p data-i18n="hero-subtitle">ゲーム開発、オンラインサービス、インテリジェントネットワークを統合し、安全で魅力的なエコシステムを提供します。</p>
           <div class="cta-row">
-            <a class="btn btn-primary" href="#games">查看产品</a>
-            <a class="btn btn-secondary" href="#contact">商务合作</a>
+            <a class="btn btn-primary" href="#games" data-i18n="hero-cta-primary">製品を見る</a>
+            <a class="btn btn-secondary" href="#contact" data-i18n="hero-cta-secondary">ビジネス相談</a>
           </div>
           <div style="margin-top:22px;font-size:0.95rem;color:var(--muted)">
-            <strong style="color:white">服务范围</strong>
+            <strong data-i18n="hero-services-title" style="color:white">サービス領域</strong>
             <div style="display:flex;gap:12px;margin-top:8px;flex-wrap:wrap">
-              <span style="background:rgba(255,255,255,0.03);padding:8px;border-radius:8px">在线游戏开发</span>
-              <span style="background:rgba(255,255,255,0.03);padding:8px;border-radius:8px">网络运维</span>
-              <span style="background:rgba(255,255,255,0.03);padding:8px;border-radius:8px">安全与分析</span>
+              <span data-i18n="hero-pill-1" style="background:rgba(255,255,255,0.03);padding:8px;border-radius:8px">オンラインゲーム開発</span>
+              <span data-i18n="hero-pill-2" style="background:rgba(255,255,255,0.03);padding:8px;border-radius:8px">ネットワーク運用</span>
+              <span data-i18n="hero-pill-3" style="background:rgba(255,255,255,0.03);padding:8px;border-radius:8px">セキュリティと分析</span>
             </div>
           </div>
         </div>
-        <aside class="hero-right" aria-label="公司概览">
+        <aside class="hero-right" aria-label="企業概要">
           <div class="hero-card" role="region" aria-labelledby="company-stats">
-            <img src="YYDEFullsize.png" alt="逸响药院大标识" />
-            <div id="company-stats" style="font-weight:700">关于 逸响药院</div>
-            <div style="color:var(--muted);font-size:0.95rem">成立：2020 • 布局：中国 / 东京 • 使命：以技术改变娱乐</div>
-            <div class="kpis" aria-hidden="false">
-              <div class="kpi"><strong>12</strong><small style="color:var(--muted)">自研标题</small></div>
-              <div class="kpi"><strong>3M+</strong><small style="color:var(--muted)">月活</small></div>
-              <div class="kpi"><strong>24/7</strong><small style="color:var(--muted)">运维</small></div>
-            </div>
+            <img src="YYDEFullsize.png" alt="逸響薬院メインロゴ" data-i18n-alt="hero-card-image-alt" />
+            <div id="company-stats" data-i18n="hero-card-title" style="font-weight:700">逸響薬院について</div>
+            <div data-i18n="hero-card-description" style="color:var(--muted);font-size:0.95rem">設立：2025 ・ 拠点：福岡／薬院 ・ ミッション：テクノロジーでエンタメを変革</div>
           </div>
         </aside>
       </section>
       <section id="about" aria-labelledby="about-title">
         <div class="section-title">
-          <h3 id="about-title">关于我们</h3>
-          <p>愿景与优势</p>
+          <h3 id="about-title" data-i18n="about-title">私たちについて</h3>
+          <p data-i18n="about-subtitle">ビジョンと強み</p>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px">
           <div style="background:rgba(255,255,255,0.02);padding:16px;border-radius:12px">
-            <h4>愿景</h4>
-            <p style="color:var(--muted)">融合游戏与网络，创造更安全更有趣的线上空间。</p>
+            <h4 data-i18n="about-vision-title">ビジョン</h4>
+            <p data-i18n="about-vision-text" style="color:var(--muted)">ゲームとネットワークを融合し、より安全で楽しいオンライン空間を創造します。</p>
           </div>
           <div style="background:rgba(255,255,255,0.02);padding:16px;border-radius:12px">
-            <h4>使命</h4>
-            <p style="color:var(--muted)">以用户为中心，数据驱动持续改进。</p>
+            <h4 data-i18n="about-mission-title">ミッション</h4>
+            <p data-i18n="about-mission-text" style="color:var(--muted)">ユーザー中心・データドリブンで継続的に改善します。</p>
           </div>
         </div>
       </section>
       <section id="games" aria-labelledby="games-title">
         <div class="section-title">
-          <h3 id="games-title">主要产品</h3>
-          <p>代表性标题与服务</p>
+          <h3 id="games-title" data-i18n="games-title">主要プロダクト</h3>
+          <p data-i18n="games-subtitle" style="color:var(--muted)">代表的なタイトルとサービス</p>
         </div>
         <div class="games-grid" role="list">
           <article class="game" role="listitem" aria-labelledby="g1">
-            <img src="YYDES.png" alt="产品缩略图" />
-            <h4 id="g1">Echo Blade（暂名）</h4>
-            <p>动作RPG。融合大规模PvP与协作玩法。</p>
-          </article>
-          <article class="game" role="listitem" aria-labelledby="g2">
-            <div style="height:110px;border-radius:8px;background:linear-gradient(90deg,#123 0%,#246 100%);display:flex;align-items:center;justify-content:center;color:white;font-weight:700">Coming Soon</div>
-            <h4 id="g2">Nebula Fleet</h4>
-            <p>跨平台战略网络游戏，支持云存档。</p>
-          </article>
-          <article class="game" role="listitem" aria-labelledby="g3">
-            <div style="height:110px;border-radius:8px;background:linear-gradient(90deg,#064 0%,#06b6d4 100%);display:flex;align-items:center;justify-content:center;color:white;font-weight:700">Service</div>
-            <h4 id="g3">网络运营平台</h4>
-            <p>运维面板、匹配系统、日志分析一体化。</p>
+            <div style="height:110px;border-radius:8px;background:linear-gradient(135deg,#1f2937 0%,#334155 100%);display:flex;align-items:center;justify-content:center;color:white;font-weight:700">Coming Soon</div>
+            <h4 id="g1" data-i18n="games-coming-soon-title">Coming Soon</h4>
+            <p data-i18n="games-coming-soon-desc">次のフラッグシップタイトルを準備中です。どうぞご期待ください。</p>
           </article>
         </div>
       </section>
       <section id="team" aria-labelledby="team-title">
         <div class="section-title">
-          <h3 id="team-title">团队</h3>
-          <p>核心成员</p>
+          <h3 id="team-title" data-i18n="team-title">チーム</h3>
+          <p data-i18n="team-subtitle">コアメンバー</p>
         </div>
         <div class="team-grid">
           <div class="member" role="article" aria-labelledby="m1">
-            <div class="avatar">JS</div>
-            <h4 id="m1">李 晨（CEO）</h4>
-            <div style="color:var(--muted)">产品战略</div>
+            <div class="avatar">HA</div>
+            <h4 id="m1" data-i18n="team-member-1">Haru</h4>
+            <div data-i18n="team-role-1" style="color:var(--muted)">リーダー</div>
           </div>
           <div class="member" role="article" aria-labelledby="m2">
-            <div class="avatar">MK</div>
-            <h4 id="m2">山田 真（CTO）</h4>
-            <div style="color:var(--muted)">网络与基础设施</div>
+            <div class="avatar">R</div>
+            <h4 id="m2" data-i18n="team-member-2">r</h4>
+            <div data-i18n="team-role-2" style="color:var(--muted)">コアメンバー</div>
           </div>
           <div class="member" role="article" aria-labelledby="m3">
-            <div class="avatar">AL</div>
-            <h4 id="m3">张 丽（CMO）</h4>
-            <div style="color:var(--muted)">市场与社区</div>
+            <div class="avatar">Y</div>
+            <h4 id="m3" data-i18n="team-member-3">Y</h4>
+            <div data-i18n="team-role-3" style="color:var(--muted)">コアメンバー</div>
           </div>
           <div class="member" role="article" aria-labelledby="m4">
-            <div class="avatar">RN</div>
-            <h4 id="m4">王 强（Lead Dev）</h4>
-            <div style="color:var(--muted)">引擎与系统</div>
+            <div class="avatar">E</div>
+            <h4 id="m4" data-i18n="team-member-4">E</h4>
+            <div data-i18n="team-role-4" style="color:var(--muted)">コアメンバー</div>
+          </div>
+          <div class="member" role="article" aria-labelledby="m5">
+            <div class="avatar">M</div>
+            <h4 id="m5" data-i18n="team-member-5">M</h4>
+            <div data-i18n="team-role-5" style="color:var(--muted)">コアメンバー</div>
           </div>
         </div>
       </section>
       <section id="news" aria-labelledby="news-title">
         <div class="section-title">
-          <h3 id="news-title">最新新闻</h3>
-          <p>更新与发布</p>
+          <h3 id="news-title" data-i18n="news-title">最新ニュース</h3>
+          <p data-i18n="news-subtitle">アップデートとリリース</p>
         </div>
         <div class="news-list">
           <div class="news-item" role="article">
             <div style="flex:1">
-              <strong>Echo Blade：大型更新已上线</strong>
-              <div style="color:var(--muted)">新地图与新赛季。</div>
+              <strong data-i18n="news-coming-soon-title">Coming Soon</strong>
+              <div data-i18n="news-coming-soon-desc" style="color:var(--muted)">最新情報を準備中です。続報をお待ちください。</div>
             </div>
-            <div style="text-align:right"><time datetime="2025-09-01">2025-09-01</time></div>
-          </div>
-          <div class="news-item" role="article">
-            <div style="flex:1">
-              <strong>官方社区已开放</strong>
-              <div style="color:var(--muted)">Discord / 微博官方频道开通。</div>
-            </div>
-            <div style="text-align:right"><time datetime="2025-07-10">2025-07-10</time></div>
           </div>
         </div>
       </section>
       <section id="contact" aria-labelledby="contact-title">
         <div class="section-title">
-          <h3 id="contact-title">联系我们</h3>
-          <p>商务/招聘/媒体</p>
+          <h3 id="contact-title" data-i18n="contact-title">お問い合わせ</h3>
+          <p data-i18n="contact-subtitle">ビジネス／採用／メディア</p>
         </div>
         <div class="contact-form" role="form" aria-label="Contact form">
-          <form style="display:flex;flex-direction:column;gap:12px" onsubmit="event.preventDefault();alert('这是演示提交。需要后端集成请联系我。');">
+          <form id="contact-form" style="display:flex;flex-direction:column;gap:12px">
             <div class="field">
-              <label for="name">姓名</label>
-              <input id="name" name="name" placeholder="张三" required />
+              <label for="name" data-i18n="contact-name-label">お名前</label>
+              <input id="name" name="name" placeholder="山田 太郎" required data-i18n-placeholder="contact-name-placeholder" />
             </div>
             <div class="field">
-              <label for="email">邮箱</label>
-              <input id="email" name="email" type="email" placeholder="name@example.com" required />
+              <label for="email" data-i18n="contact-email-label">メール</label>
+              <input id="email" name="email" type="email" placeholder="name@example.com" required data-i18n-placeholder="contact-email-placeholder" />
             </div>
             <div class="field">
-              <label for="message">内容</label>
-              <textarea id="message" name="message" placeholder="请填写您的需求" required></textarea>
+              <label for="message" data-i18n="contact-message-label">内容</label>
+              <textarea id="message" name="message" placeholder="ご要件をご記入ください" required data-i18n-placeholder="contact-message-placeholder"></textarea>
             </div>
             <div style="display:flex;gap:8px">
-              <button class="btn btn-primary" type="submit">发送</button>
-              <button class="btn btn-secondary" type="button" onclick="document.getElementById('name').value='';document.getElementById('email').value='';document.getElementById('message').value='';">清空</button>
+              <button class="btn btn-primary" type="submit" data-i18n="contact-submit">送信</button>
+              <button id="clear-form" class="btn btn-secondary" type="button" data-i18n="contact-clear">リセット</button>
             </div>
           </form>
           <aside style="background:rgba(255,255,255,0.02);padding:16px;border-radius:12px">
-            <h4>联系方式</h4>
-            <p style="color:var(--muted)">Email: info@yxyk-example.com<br/>地点：中国 / 东京</p>
-            <h4 style="margin-top:12px">招聘</h4>
-            <p style="color:var(--muted)">邮件主题请注明【招聘】。</p>
+            <h4 data-i18n="contact-info-title">連絡先</h4>
+            <p data-i18n="contact-info-text" style="color:var(--muted)">Email: info@yxyk-example.com<br/>所在地：日本／福岡・薬院</p>
+            <h4 data-i18n="contact-hiring-title" style="margin-top:12px">採用情報</h4>
+            <p data-i18n="contact-hiring-text" style="color:var(--muted)">件名に【採用】とご記入ください。</p>
           </aside>
         </div>
       </section>
     </main>
     <footer role="contentinfo">
-      <div>© 逸响药院游戏网络科技集团</div>
-      <div style="color:var(--muted)">隐私政策・使用条款・公司信息</div>
+      <div data-i18n="footer-copy">© 逸響薬院ゲームネットワークテクノロジーグループ</div>
+      <div data-i18n="footer-links" style="color:var(--muted)">プライバシー・利用規約・企業情報</div>
     </footer>
   </div>
+  <script>
+    (function () {
+      const translations = {
+        zh: {
+          htmlLang: 'zh-Hans',
+          title: '逸响药院游戏网络科技集团 - 官方网站',
+          metaDescription: '逸响药院游戏网络科技集团 - 创新游戏开发・网络科技',
+          toggleText: '日本語',
+          toggleAriaLabel: '切换到日语',
+          next: 'ja',
+          demoAlert: '这是演示提交。需要后端集成请联系我。',
+          elements: {
+            'brand-name': '逸响药院 游戏网络科技集团',
+            'brand-tagline': '创新・娱乐・技术',
+            'nav-about': '关于我们',
+            'nav-products': '产品',
+            'nav-team': '团队',
+            'nav-news': '新闻',
+            'nav-contact': '联系我们',
+            'hero-title': '次世代的游戏体验与网络技术，面向全球。',
+            'hero-subtitle': '我们整合游戏开发、在线服务与智能网络，为玩家提供安全而富有魅力的生态。',
+            'hero-cta-primary': '查看产品',
+            'hero-cta-secondary': '商务合作',
+            'hero-services-title': '服务范围',
+            'hero-pill-1': '在线游戏开发',
+            'hero-pill-2': '网络运维',
+            'hero-pill-3': '安全与分析',
+            'hero-card-title': '关于 逸响药院',
+            'hero-card-description': '成立：2025 • 布局：日本 / 福冈・药院 • 使命：以技术改变娱乐',
+            'about-title': '关于我们',
+            'about-subtitle': '愿景与优势',
+            'about-vision-title': '愿景',
+            'about-vision-text': '融合游戏与网络，创造更安全更有趣的线上空间。',
+            'about-mission-title': '使命',
+            'about-mission-text': '以用户为中心，数据驱动持续改进。',
+            'games-title': '主要产品',
+            'games-subtitle': '代表性标题与服务',
+            'games-coming-soon-title': 'Coming Soon',
+            'games-coming-soon-desc': '我们正在打造下一代的旗舰作品，敬请期待。',
+            'team-title': '团队',
+            'team-subtitle': '核心成员',
+            'team-member-1': 'Haru',
+            'team-role-1': '团队负责人',
+            'team-member-2': 'r',
+            'team-role-2': '核心成员',
+            'team-member-3': 'Y',
+            'team-role-3': '核心成员',
+            'team-member-4': 'E',
+            'team-role-4': '核心成员',
+            'team-member-5': 'M',
+            'team-role-5': '核心成员',
+            'news-title': '最新新闻',
+            'news-subtitle': '更新与发布',
+            'news-coming-soon-title': 'Coming Soon',
+            'news-coming-soon-desc': '最新动态正在筹备中，敬请期待。',
+            'contact-title': '联系我们',
+            'contact-subtitle': '商务/招聘/媒体',
+            'contact-name-label': '姓名',
+            'contact-email-label': '邮箱',
+            'contact-message-label': '内容',
+            'contact-submit': '发送',
+            'contact-clear': '清空',
+            'contact-info-title': '联系方式',
+            'contact-info-text': 'Email: info@yxyk-example.com<br/>地点：日本 / 福冈・药院',
+            'contact-hiring-title': '招聘',
+            'contact-hiring-text': '邮件主题请注明【招聘】。',
+            'footer-copy': '© 逸响药院游戏网络科技集团',
+            'footer-links': '隐私政策・使用条款・公司信息'
+          },
+          placeholders: {
+            'contact-name-placeholder': '张三',
+            'contact-email-placeholder': 'name@example.com',
+            'contact-message-placeholder': '请填写您的需求'
+          },
+          attrs: {
+            'brand-logo-alt': '逸响药院标志',
+            'hero-card-image-alt': '逸响药院大标识'
+          }
+        },
+        ja: {
+          htmlLang: 'ja',
+          title: '逸響薬院ゲームネットワークテクノロジーグループ - 公式サイト',
+          metaDescription: '逸響薬院ゲームネットワークテクノロジーグループ - 革新的なゲーム開発とネットワーク技術',
+          toggleText: '中文',
+          toggleAriaLabel: '中国語に切り替え',
+          next: 'zh',
+          demoAlert: 'これはデモ送信です。バックエンド連携についてはお問い合わせください。',
+          elements: {
+            'brand-name': '逸響薬院 ゲームネットワークテクノロジーグループ',
+            'brand-tagline': 'イノベーション・エンタメ・テクノロジー',
+            'nav-about': '私たちについて',
+            'nav-products': 'プロダクト',
+            'nav-team': 'チーム',
+            'nav-news': 'ニュース',
+            'nav-contact': 'お問い合わせ',
+            'hero-title': '次世代のゲーム体験とネットワーク技術を世界へ。',
+            'hero-subtitle': 'ゲーム開発、オンラインサービス、インテリジェントネットワークを統合し、安全で魅力的なエコシステムを提供します。',
+            'hero-cta-primary': '製品を見る',
+            'hero-cta-secondary': 'ビジネス相談',
+            'hero-services-title': 'サービス領域',
+            'hero-pill-1': 'オンラインゲーム開発',
+            'hero-pill-2': 'ネットワーク運用',
+            'hero-pill-3': 'セキュリティと分析',
+            'hero-card-title': '逸響薬院について',
+            'hero-card-description': '設立：2025 ・ 拠点：福岡／薬院 ・ ミッション：テクノロジーでエンタメを変革',
+            'about-title': '私たちについて',
+            'about-subtitle': 'ビジョンと強み',
+            'about-vision-title': 'ビジョン',
+            'about-vision-text': 'ゲームとネットワークを融合し、より安全で楽しいオンライン空間を創造します。',
+            'about-mission-title': 'ミッション',
+            'about-mission-text': 'ユーザー中心・データドリブンで継続的に改善します。',
+            'games-title': '主要プロダクト',
+            'games-subtitle': '代表的なタイトルとサービス',
+            'games-coming-soon-title': 'Coming Soon',
+            'games-coming-soon-desc': '次のフラッグシップタイトルを準備中です。どうぞご期待ください。',
+            'team-title': 'チーム',
+            'team-subtitle': 'コアメンバー',
+            'team-member-1': 'Haru',
+            'team-role-1': 'リーダー',
+            'team-member-2': 'r',
+            'team-role-2': 'コアメンバー',
+            'team-member-3': 'Y',
+            'team-role-3': 'コアメンバー',
+            'team-member-4': 'E',
+            'team-role-4': 'コアメンバー',
+            'team-member-5': 'M',
+            'team-role-5': 'コアメンバー',
+            'news-title': '最新ニュース',
+            'news-subtitle': 'アップデートとリリース',
+            'news-coming-soon-title': 'Coming Soon',
+            'news-coming-soon-desc': '最新情報を準備中です。続報をお待ちください。',
+            'contact-title': 'お問い合わせ',
+            'contact-subtitle': 'ビジネス／採用／メディア',
+            'contact-name-label': 'お名前',
+            'contact-email-label': 'メール',
+            'contact-message-label': '内容',
+            'contact-submit': '送信',
+            'contact-clear': 'リセット',
+            'contact-info-title': '連絡先',
+            'contact-info-text': 'Email: info@yxyk-example.com<br/>所在地：日本／福岡・薬院',
+            'contact-hiring-title': '採用情報',
+            'contact-hiring-text': '件名に【採用】とご記入ください。',
+            'footer-copy': '© 逸響薬院ゲームネットワークテクノロジーグループ',
+            'footer-links': 'プライバシー・利用規約・企業情報'
+          },
+          placeholders: {
+            'contact-name-placeholder': '山田 太郎',
+            'contact-email-placeholder': 'name@example.com',
+            'contact-message-placeholder': 'ご要件をご記入ください'
+          },
+          attrs: {
+            'brand-logo-alt': '逸響薬院ロゴ',
+            'hero-card-image-alt': '逸響薬院メインロゴ'
+          }
+        }
+      };
+
+      const form = document.getElementById('contact-form');
+      const clearBtn = document.getElementById('clear-form');
+      const toggleBtn = document.getElementById('lang-toggle');
+
+      function applyLang(lang) {
+        const config = translations[lang] || translations.zh;
+        document.documentElement.lang = config.htmlLang;
+        document.title = config.title;
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+          metaDesc.setAttribute('content', config.metaDescription);
+        }
+        document.querySelectorAll('[data-i18n]').forEach((el) => {
+          const key = el.getAttribute('data-i18n');
+          if (key && Object.prototype.hasOwnProperty.call(config.elements, key)) {
+            el.innerHTML = config.elements[key];
+          }
+        });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+          const key = el.getAttribute('data-i18n-placeholder');
+          if (key && Object.prototype.hasOwnProperty.call(config.placeholders, key)) {
+            el.setAttribute('placeholder', config.placeholders[key]);
+          }
+        });
+        document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+          const key = el.getAttribute('data-i18n-alt');
+          if (key && Object.prototype.hasOwnProperty.call(config.attrs, key)) {
+            el.setAttribute('alt', config.attrs[key]);
+          }
+        });
+        if (toggleBtn) {
+          toggleBtn.textContent = config.toggleText;
+          toggleBtn.setAttribute('aria-label', config.toggleAriaLabel);
+          toggleBtn.dataset.nextLang = config.next;
+        }
+        if (form) {
+          form.dataset.demoAlert = config.demoAlert;
+        }
+      }
+
+      const stored = typeof localStorage !== 'undefined' ? localStorage.getItem('preferredLang') : null;
+      const initialLang = stored && translations[stored] ? stored : 'ja';
+      applyLang(initialLang);
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          const nextLang = toggleBtn.dataset.nextLang || 'ja';
+          const langToApply = translations[nextLang] ? nextLang : 'zh';
+          applyLang(langToApply);
+          if (typeof localStorage !== 'undefined') {
+            localStorage.setItem('preferredLang', langToApply);
+          }
+        });
+      }
+
+      if (form) {
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          const message = form.dataset.demoAlert || '这是演示提交。';
+          alert(message);
+        });
+      }
+
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          if (form) {
+            form.reset();
+          }
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
